@@ -32,20 +32,7 @@
     methods: {
       fetch_products: _.debounce(
         function () {
-          var params = querystring.stringify({
-            filter: {
-              price_to: this.price_to,
-              price_from: this.price_from,
-              categories: this.categories
-            },
-            sort: this.sort_sequence,
-            page: {
-              size: this.page_size,
-              number: this.currentPage
-            }
-          })
-
-          axios.get('http://localhost:3000/api/v1/products', params)
+          axios.get('http://localhost:3000/api/v1/products', this.fetch_post_params)
             .then((response) => {
               this.products = response.data.data
               this.page_count = response.data.meta.page_count
@@ -61,6 +48,15 @@
         this.price_from = values.price_from
         this.sort_sequence = values.sort_sequence
         this.fetch_products()
+      }
+    },
+    computed: {
+      fetch_products_params () {
+        return querystring.stringify({
+          filter: { price_to: this.price_to, price_from: this.price_from, categories: this.categories },
+          sort: this.sort_sequence,
+          page: { size: this.page_size, number: this.currentPage }
+        })
       }
     }
   }
