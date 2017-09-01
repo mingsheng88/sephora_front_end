@@ -1,7 +1,7 @@
 <template>
   <b-row class='mt-3 mb-3' @keyup.enter='emit_changes'>
     <b-col sm='3'>
-      <b-form-input type='text' placeholder='Category' v-model='categories' />
+      <b-form-input type='text' placeholder='Category' v-model='category_names' />
     </b-col>
     <b-col sm='2'>
       <b-form-input type='text' placeholder='Min Price' v-model='price_from' />
@@ -31,7 +31,7 @@
         type: Object,
         default: () => {
           return {
-            categories: '',
+            category_names: '',
             price_from: null,
             price_to: null,
             sort_sequence: null
@@ -41,7 +41,7 @@
     },
     data () {
       return {
-        categories: this.filter_params.categories,
+        category_names: this.filter_params.category_names,
         price_from: this.filter_params.price_from,
         price_to: this.filter_params.price_to,
         sort_sequence: this.filter_params.sort_sequence,
@@ -58,7 +58,7 @@
     methods: {
       emit_changes () {
         this.$emit('filter_params_emitted', {
-          categories: this.categories,
+          category_names: this.category_names,
           price_to: this.price_to,
           price_from: this.price_from,
           sort_sequence: this.sort_sequence

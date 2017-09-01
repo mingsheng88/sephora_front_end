@@ -25,7 +25,7 @@
     data () {
       return {
         products: [],
-        categories: '',
+        category_names: '',
         price_from: null,
         price_to: null,
         sort_sequence: null,
@@ -65,7 +65,7 @@
             })
         }, 200),
       update_filter_params: function (values) {
-        this.categories = values.categories
+        this.category_names = values.category_names
         this.price_to = values.price_to
         this.price_from = values.price_from
         this.sort_sequence = values.sort_sequence
@@ -75,7 +75,7 @@
     computed: {
       filter_params () {
         return qs.stringify({
-          filter: { price_to: this.price_to, price_from: this.price_from, categories: this.categories },
+          filter: { price_to: this.price_to, price_from: this.price_from, category_names: this.category_names },
           sort: this.sort_sequence,
           page: { size: this.page_size, number: this.currentPage }
         })
