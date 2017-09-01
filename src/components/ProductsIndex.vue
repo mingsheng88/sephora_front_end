@@ -53,7 +53,7 @@
       fetch_products: _.debounce(
         function () {
           axios
-            .get(`http://localhost:3000/api/v1/products?${this.filter_params}`)
+            .get(`${process.env.API_BASE_URL}/products?${this.filter_params}`)
             .then((response) => {
               // FIXME: Input sanitisation ; Use POJO / Deserializer class
               this.products = response.data.data

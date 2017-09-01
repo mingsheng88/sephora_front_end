@@ -62,7 +62,7 @@
       fetch_product: function () {
         var that = this
         axios
-          .get(`http://localhost:3000/api/v1/products/${this.$route.params.id}`)
+          .get(`${process.env.API_BASE_URL}/products/${this.$route.params.id}`)
           .then(function (response) {
             that.product = response.data.data
           })
