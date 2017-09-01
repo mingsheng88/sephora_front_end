@@ -9,7 +9,8 @@
           :sm="product_width"
           class="d-flex justify-content-center"
           v-for='product in products.slice((i - 1) * products_per_row, i * products_per_row)'
-          :key='product'>
+          :item='product'
+          :key='product.id'>
           <product-card :product='product'/>
         </b-col>
       </b-row>

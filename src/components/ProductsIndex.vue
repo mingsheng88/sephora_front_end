@@ -1,6 +1,14 @@
 <template>
   <div>
     <products-filter :fetch_products='fetch_products' @filter_params_emitted='update_filter_params'/>
+    <b-pagination-nav
+      class='col-xs-12'
+      align= 'center'
+      :link-gen='function() { return "#" }'
+      v-model='currentPage'
+      :number-of-pages='page_count'
+      :per-page='page_size'
+      />
     <products-list :products='products'/>
   </div>
 </template>
@@ -20,7 +28,21 @@
         categories: '',
         price_from: null,
         price_to: null,
-        sort_sequence: null
+        sort_sequence: null,
+        // Requires camelcase for bootstrap-vue
+        currentPage: 1,
+        page_size: 21,
+        page_count: 1
+      }
+    },
+    watch: {
+      sort_sequence: function (value) { this.fetch_products() },
+      currentPage: function () {
+        if (this.currentPage && this.currentPage > 0) {
+          this.fetch_products()
+        } else {
+          this.currentPage = 1
+        }
       }
     },
     components: {
@@ -35,6 +57,8 @@
             .then((response) => {
               // FIXME: Input sanitisation ; Use POJO / Deserializer class
               this.products = response.data.data
+              this.page_count = response.data.meta.page_count
+              this.page_size = response.data.meta.page_size
             })
             .catch((error) => {
               this.error_message = `An '${error.statusText}' has occurred. Please try again shortly.`
