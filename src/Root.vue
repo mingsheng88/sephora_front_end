@@ -1,8 +1,13 @@
 <template>
   <div id="root">
     <b-container>
+
       <app-header></app-header>
-      <router-view></router-view>
+
+      <b-alert class='mt-3' variant='danger' :show='this.has_error_message()'>{{ error_message }}</b-alert>
+
+      <router-view @error_emitted='show_error'></router-view>
+
     </b-container>
   </div>
 </template>
@@ -12,8 +17,20 @@
 
   export default {
     name: 'root',
+    data () {
+      return {
+        error_message: ''
+      }
+    },
     components: {
       'app-header': Header
+    },
+    methods: {
+      show_error (value) {
+        this.error_message =
+          `An '${value}' has occurred. Please try again shortly.`
+      },
+      has_error_message () { return this.error_message.length > 0 }
     }
   }
 </script>

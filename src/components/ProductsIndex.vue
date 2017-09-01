@@ -61,7 +61,7 @@
               this.page_size = response.data.meta.page_size
             })
             .catch((error) => {
-              this.error_message = `An '${error.statusText}' has occurred. Please try again shortly.`
+              this.$emit('error_emitted', error.response.statusText)
             })
         }, 200),
       update_filter_params: function (values) {

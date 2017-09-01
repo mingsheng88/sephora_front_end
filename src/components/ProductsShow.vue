@@ -60,11 +60,14 @@
     },
     methods: {
       fetch_product: function () {
-        var holder = this
+        var that = this
         axios
           .get(`http://localhost:3000/api/v1/products/${this.$route.params.id}`)
           .then(function (response) {
-            holder.product = response.data.data
+            that.product = response.data.data
+          })
+          .catch(function (error) {
+            that.$emit('error_emitted', error.response.statusText)
           })
       }
     },
