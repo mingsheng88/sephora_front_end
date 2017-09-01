@@ -4,7 +4,7 @@
 
       <app-header></app-header>
 
-      <b-alert class='mt-3' variant='danger' :show='this.has_error_message()'>{{ error_message }}</b-alert>
+      <b-alert dismissible class='mt-3' variant='danger' :show='this.has_error_message()'>{{ error_message }}</b-alert>
 
       <router-view @error_emitted='show_error'></router-view>
 
