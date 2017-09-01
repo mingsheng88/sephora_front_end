@@ -33,9 +33,8 @@
           axios
             .get(`http://localhost:3000/api/v1/products?${this.filter_params}`)
             .then((response) => {
+              // FIXME: Input sanitisation ; Use POJO / Deserializer class
               this.products = response.data.data
-              this.page_count = response.data.meta.page_count
-              this.page_size = response.data.meta.page_size
             })
             .catch((error) => {
               this.error_message = `An '${error.statusText}' has occurred. Please try again shortly.`
