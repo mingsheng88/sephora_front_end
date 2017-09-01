@@ -98,14 +98,6 @@
     color: #a9a9a9;
   }
 
-  @font-face {
-    font-family: 'entypo';
-    src: url(https://cdnjs.cloudflare.com/ajax/libs/entypo/2.0/entypo.woff) format(woff)
-         url(https://cdnjs.cloudflare.com/ajax/libs/entypo/2.0/entypo.svg) format(svg)
-         url(https://cdnjs.cloudflare.com/ajax/libs/entypo/2.0/entypo.eot) format(eot)
-         url(https://cdnjs.cloudflare.com/ajax/libs/entypo/2.0/entypo.ttf) format(ttf);
-  }
-
   .add_to_wishlist {
     font-family: 'entypo';
     position: absolute;
