@@ -11,7 +11,7 @@
           v-for='product in products.slice((i - 1) * products_per_row, i * products_per_row)'
           :item='product'
           :key='product.id'>
-          <product-card :product='product'/>
+          <product-card :product='product' />
         </b-col>
       </b-row>
     </template>

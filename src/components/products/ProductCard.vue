@@ -1,5 +1,5 @@
 <template>
-  <div class='product mb-3' @click='open_product_page()'>
+  <div class='product mb-3' @click='goto_product_page'>
     <product-card-image :product='product' />
     <div class='font-weight-bold text-uppercase'>{{ brand_name }}</div>
     <div>{{ name }}</div>
@@ -13,9 +13,7 @@
   export default {
     name: 'product_card',
     props: {
-      product: {
-        type: Object
-      }
+      product: { type: Object }
     },
     components: {
       'product-card-image': ProductCardImage
@@ -26,6 +24,11 @@
       price () { return this.product.attributes.price },
       sale_status () { return this.product.attributes.sale_status },
       is_on_sale () { return this.sale_status === 'on_sale' }
+    },
+    methods: {
+      goto_product_page: function (product) {
+        this.$router.push({ path: `/products/${this.product.id}` })
+      }
     }
   }
 </script>

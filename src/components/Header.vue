@@ -5,17 +5,13 @@
     type='dark'
     variant='dark'
     >
-    <b-navbar-brand href="#">Home</b-navbar-brand>
+    <b-navbar-brand href="/">Home</b-navbar-brand>
   </b-navbar>
 </template>
 
 <script>
   export default {
-    name: 'header',
-    data () {
-      return {
-      }
-    }
+    name: 'header'
   }
 </script>
 

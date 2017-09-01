@@ -1,6 +1,7 @@
 <template>
   <div>
     <products-filter :fetch_products='fetch_products' @filter_params_emitted='update_filter_params'/>
+    <products-list :products='products'/>
     <b-pagination-nav
       class='col-xs-12'
       align= 'center'
@@ -9,7 +10,6 @@
       :number-of-pages='page_count'
       :per-page='page_size'
       />
-    <products-list :products='products'/>
   </div>
 </template>
 
