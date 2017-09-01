@@ -61,7 +61,7 @@
               this.page_size = response.data.meta.page_size
             })
             .catch((error) => {
-              this.$emit('error_emitted', error.response.statusText)
+              this.$emit('error_emitted', error)
             })
         }, 200),
       update_filter_params: function (values) {

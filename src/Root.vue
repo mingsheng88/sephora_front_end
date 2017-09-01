@@ -27,8 +27,9 @@
     },
     methods: {
       show_error (value) {
+        var message = value.response && value.response.statusText || value.message
         this.error_message =
-          `An '${value}' has occurred. Please try again shortly.`
+          `Oops... '${message}' has occurred. Please try again shortly.`
       },
       has_error_message () { return this.error_message.length > 0 }
     }

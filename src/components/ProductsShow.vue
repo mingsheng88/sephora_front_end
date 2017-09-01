@@ -67,7 +67,7 @@
             that.product = response.data.data
           })
           .catch(function (error) {
-            that.$emit('error_emitted', error.response.statusText)
+            that.$emit('error_emitted', error)
           })
       }
     },
