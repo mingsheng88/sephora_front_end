@@ -1,8 +1,6 @@
 <template>
   <div>
-    <products-filter
-      :fetch_products='fetch_products'
-      @update_filter_params='update_filter_params'/>
+    <products-filter :fetch_products='fetch_products' @filter_params_emitted='update_filter_params'/>
     <products-list :products='products'/>
   </div>
 </template>
@@ -12,7 +10,7 @@
   import ProductsList from '@/components/products/ProductsList'
   import _ from 'lodash'
   import axios from 'axios'
-  import querystring from 'querystring'
+  import qs from 'qs'
 
   export default {
     name: 'products_index',
@@ -32,7 +30,8 @@
     methods: {
       fetch_products: _.debounce(
         function () {
-          axios.get('http://localhost:3000/api/v1/products', this.fetch_post_params)
+          axios
+            .get(`http://localhost:3000/api/v1/products?${this.filter_params}`)
             .then((response) => {
               this.products = response.data.data
               this.page_count = response.data.meta.page_count
@@ -51,14 +50,15 @@
       }
     },
     computed: {
-      fetch_products_params () {
-        return querystring.stringify({
+      filter_params () {
+        return qs.stringify({
           filter: { price_to: this.price_to, price_from: this.price_from, categories: this.categories },
           sort: this.sort_sequence,
           page: { size: this.page_size, number: this.currentPage }
         })
       }
-    }
+    },
+    created: function () { this.fetch_products() }
   }
 </script>
 

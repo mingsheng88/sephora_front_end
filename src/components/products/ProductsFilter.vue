@@ -54,7 +54,7 @@
     },
     methods: {
       emit_changes (event) {
-        this.$emit('update_filter_params', {
+        this.$emit('filter_params_emitted', {
           categories: this.categories,
           price_to: this.price_to,
           price_from: this.price_from,
