@@ -1,5 +1,5 @@
 <template>
-  <div class='product' @click='open_product_page()'>
+  <div class='product mb-3' @click='open_product_page()'>
     <product-card-image :product='product' />
     <div class='font-weight-bold text-uppercase'>{{ brand_name }}</div>
     <div>{{ name }}</div>
@@ -35,7 +35,6 @@
     cursor: pointer;
     width: 100%;
     max-width: 225px;
-    margin-bottom: 30px;
     position: relative;
   }
 </style>

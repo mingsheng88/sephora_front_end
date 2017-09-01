@@ -52,8 +52,11 @@
         ]
       }
     },
+    watch: {
+      sort_sequence () { this.emit_changes() }
+    },
     methods: {
-      emit_changes (event) {
+      emit_changes () {
         this.$emit('filter_params_emitted', {
           categories: this.categories,
           price_to: this.price_to,

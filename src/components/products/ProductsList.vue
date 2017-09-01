@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Products List</h1>
+    <h1 class='mb-3'>Products List</h1>
     <template v-if='products.length > 0'>
       <b-row
         v-for='i in Math.ceil(products.length / products_per_row)'
