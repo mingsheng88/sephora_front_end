@@ -53,7 +53,8 @@
       }
     },
     watch: {
-      sort_sequence () { this.emit_changes() }
+      sort_sequence () { this.emit_changes() },
+      category_names () { this.emit_changes() }
     },
     methods: {
       emit_changes () {
