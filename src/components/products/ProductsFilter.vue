@@ -1,7 +1,7 @@
 <template>
   <b-row class='mt-3 mb-3' @keyup.enter='emit_changes'>
     <b-col sm='3'>
-      <b-form-input type='text' placeholder='Category' v-model='category_names' />
+      <b-form-select v-model='category_names' :options='this.categories_options'/>
     </b-col>
     <b-col sm='2'>
       <b-form-input type='text' placeholder='Min Price' v-model='price_from' />
@@ -24,8 +24,8 @@
   export default {
     name: 'products_filter',
     props: {
-      fetch_products: {
-        type: Function
+      categories: {
+        type: Array
       },
       filter_params: {
         type: Object,
@@ -62,6 +62,13 @@
           price_to: this.price_to,
           price_from: this.price_from,
           sort_sequence: this.sort_sequence
+        })
+      }
+    },
+    computed: {
+      categories_options: function () {
+        return this.categories.map((x) => {
+          return { text: x.attributes.name, value: x.attributes.name }
         })
       }
     }

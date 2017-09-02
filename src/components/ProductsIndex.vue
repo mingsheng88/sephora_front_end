@@ -1,6 +1,9 @@
 <template>
   <div>
-    <products-filter :fetch_products='fetch_products' @filter_params_emitted='update_filter_params'/>
+    <products-filter
+      :fetch_products='fetch_products'
+      :categories='categories'
+      @filter_params_emitted='update_filter_params'/>
     <products-list :products='products'/>
     <b-pagination-nav
       class='col-xs-12'
@@ -25,6 +28,7 @@
     data () {
       return {
         products: [],
+        categories: [],
         category_names: '',
         price_from: null,
         price_to: null,
@@ -64,6 +68,18 @@
               this.$emit('error_emitted', error)
             })
         }, 200),
+      fetch_categories: _.debounce(
+        function () {
+          axios
+            .get(`${process.env.API_BASE_URL}/categories`)
+            .then((response) => {
+              // FIXME: Input sanitisation ; Use POJO / Deserializer class
+              this.categories = response.data.data
+            })
+            .catch((error) => {
+              this.$emit('error_emitted', error)
+            })
+        }, 200),
       update_filter_params: function (values) {
         this.category_names = values.category_names
         this.price_to = values.price_to
@@ -81,7 +97,10 @@
         })
       }
     },
-    created: function () { this.fetch_products() }
+    created: function () {
+      this.fetch_categories()
+      this.fetch_products()
+    }
   }
 </script>
 
