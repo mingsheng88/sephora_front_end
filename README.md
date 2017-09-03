@@ -2,6 +2,10 @@
 
 > Sephora front end Vue.js project
 
+## General Comments
+
+As of the time of writing, I am absolutely at ground-zero w.r.t. SPA frameworks like Vue.js / React.js. Therefore, based on 1 week of experience, I am pleased with the implementation. The corresponding Backend Project can be found [here](https://github.com/mingsheng88/sephora_technical_test).
+
 ## Build Setup
 
 ``` bash

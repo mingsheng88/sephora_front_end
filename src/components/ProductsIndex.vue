@@ -59,7 +59,7 @@
           axios
             .get(`${process.env.API_BASE_URL}/products?${this.filter_params}`)
             .then((response) => {
-              // FIXME: Input sanitisation ; Use POJO / Deserializer class
+              // TODO: Input sanitisation ; Use POJO / Deserializer class
               this.products = response.data.data
               this.page_count = response.data.meta.page_count
               this.page_size = response.data.meta.page_size
@@ -73,7 +73,7 @@
           axios
             .get(`${process.env.API_BASE_URL}/categories`)
             .then((response) => {
-              // FIXME: Input sanitisation ; Use POJO / Deserializer class
+              // TODO: Input sanitisation ; Use POJO / Deserializer class
               this.categories = response.data.data
             })
             .catch((error) => {

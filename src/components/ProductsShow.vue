@@ -64,6 +64,7 @@
         axios
           .get(`${process.env.API_BASE_URL}/products/${this.$route.params.id}`)
           .then(function (response) {
+            // TODO: Input sanization
             that.product = response.data.data
           })
           .catch(function (error) {
