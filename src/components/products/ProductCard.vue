@@ -3,7 +3,13 @@
     <product-card-image :product='product' />
     <div class='font-weight-bold text-uppercase'>{{ brand_name }}</div>
     <div>{{ name }}</div>
-    <div class='font-weight-bold'>$ {{ price }}</div>
+    <template v-if='is_on_sale'>
+      <div class='font-weight-bold'>
+        <span><del>$ {{ price }}</del></span>
+        <span class='sale-price'>$ {{ sale_price }}</span>
+      </div>
+    </template>
+    <div class='font-weight-bold' v-else>$ {{ price }}</div>
     <div class='rating'>
       <span class='fa fa-star'/>
       <span class='fa fa-star'/>
@@ -29,6 +35,7 @@
       brand_name () { return this.product.attributes.brand_name },
       name () { return this.product.attributes.name },
       price () { return this.product.attributes.price },
+      sale_price () { return this.product.attributes.sale_price },
       sale_status () { return this.product.attributes.sale_status },
       is_on_sale () { return this.sale_status === 'on_sale' }
     },
@@ -57,5 +64,9 @@
     .fa-star.muted {
       color: lightgray;
     }
+  }
+
+  .sale-price {
+    color: red;
   }
 </style>

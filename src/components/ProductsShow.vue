@@ -52,6 +52,7 @@
       brand_name () { return this.product && this.product.attributes.brand_name },
       name () { return this.product && this.product.attributes.name },
       price () { return this.product && this.product.attributes.price },
+      sale_price () { return this.product && this.product.attributes.sale_price },
       stock_status () { return this.product && this.product.attributes.stock_status },
       sale_status () { return this.product && this.product.attributes.sale_status },
       sale_text () { return this.product && this.product.attributes.sale_text },

@@ -62,7 +62,6 @@
               // TODO: Input sanitisation ; Use POJO / Deserializer class
               this.products = response.data.data
               this.page_count = response.data.meta.page_count
-              this.page_size = response.data.meta.page_size
             })
             .catch((error) => {
               this.$emit('error_emitted', error)
