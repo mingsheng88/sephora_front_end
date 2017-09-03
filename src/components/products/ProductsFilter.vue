@@ -1,7 +1,7 @@
 <template>
   <b-row class='mt-3 mb-3' @keyup.enter='emit_changes'>
     <b-col sm='3'>
-      <b-form-select v-model='category_names' :options='this.categories_options'/>
+      <b-form-select v-model='selected_category' :options='this.categories_options' :value='null'/>
     </b-col>
     <b-col sm='2'>
       <b-form-input type='text' placeholder='Min Price' v-model='price_from' />
@@ -31,7 +31,7 @@
         type: Object,
         default: () => {
           return {
-            category_names: '',
+            selected_category: null,
             price_from: null,
             price_to: null,
             sort_sequence: null
@@ -41,7 +41,7 @@
     },
     data () {
       return {
-        category_names: this.filter_params.category_names,
+        selected_category: this.filter_params.selected_category,
         price_from: this.filter_params.price_from,
         price_to: this.filter_params.price_to,
         sort_sequence: this.filter_params.sort_sequence,
@@ -54,12 +54,12 @@
     },
     watch: {
       sort_sequence () { this.emit_changes() },
-      category_names () { this.emit_changes() }
+      selected_category () { this.emit_changes() }
     },
     methods: {
       emit_changes () {
         this.$emit('filter_params_emitted', {
-          category_names: this.category_names,
+          selected_category: this.selected_category,
           price_to: this.price_to,
           price_from: this.price_from,
           sort_sequence: this.sort_sequence
@@ -68,9 +68,11 @@
     },
     computed: {
       categories_options: function () {
-        return this.categories.map((x) => {
+        var categories = this.categories.map((x) => {
           return { text: x.attributes.name, value: x.attributes.name }
         })
+        categories.unshift({ value: null, text: 'Select Root Category' })
+        return categories
       }
     }
   }
