@@ -99,23 +99,23 @@
   }
 
   .add_to_wishlist {
-    font-family: 'entypo';
+    font-family: 'FontAwesome';
     position: absolute;
-    right: 5%;
+    right: 6%;
     font-size: 24px;
 
     @media (min-width: 750px) {
-      top: 0px;
+      top: 2%;
     }
     @media (max-width: 750px) {
       bottom: 0px;
     }
   }
   .add_to_wishlist:before {
-    content: "\2661";
+    content: "\f08a";
   }
   .add_to_wishlist:hover:before {
-    content: "\2665";
+    content: "\f004";
     color: red;
   }
 </style>

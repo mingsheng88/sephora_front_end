@@ -4,6 +4,13 @@
     <div class='font-weight-bold text-uppercase'>{{ brand_name }}</div>
     <div>{{ name }}</div>
     <div class='font-weight-bold'>$ {{ price }}</div>
+    <div class='rating'>
+      <span class='fa fa-star'/>
+      <span class='fa fa-star'/>
+      <span class='fa fa-star'/>
+      <span class='fa fa-star'/>
+      <span class='fa fa-star muted'/>
+    </div>
   </div>
 </template>
 
@@ -39,5 +46,16 @@
     width: 100%;
     max-width: 225px;
     position: relative;
+  }
+
+  .rating {
+    font-size: 10px;
+
+    .fa-star {
+      color: red;
+    }
+    .fa-star.muted {
+      color: lightgray;
+    }
   }
 </style>
