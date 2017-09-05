@@ -41,7 +41,7 @@
     },
     methods: {
       goto_product_page: function (product) {
-        this.$router.push({ path: `/products/${this.product.id}` })
+        this.$router.push({ name: 'products#show', params: { id: this.product.id } })
       }
     }
   }
