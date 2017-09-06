@@ -5,7 +5,9 @@
     type='dark'
     variant='dark'
     >
-    <b-navbar-brand href="/">Home</b-navbar-brand>
+    <b-navbar-brand>
+      <router-link :to='{ name:"products#index" }'>Home</router-link>
+    </b-navbar-brand>
   </b-navbar>
 </template>
 
@@ -16,4 +18,14 @@
 </script>
 
 <style lang="scss">
+  .navbar-brand {
+    a {
+      color: inherit;
+      font-size: inherit;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
 </style>
